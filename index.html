@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- CSS GERAL (Baseado no seu arquivo) --- */
+        /* --- CSS GERAL --- */
         :root {
             --primary-orange: #f97316;
             --primary-orange-darker: #fa7214;
@@ -53,6 +53,8 @@
             background-color: var(--primary-orange-darker); color: white;
             padding: 15px 30px; border-radius: 10px; font-weight: 700; font-size: 20px;
         }
+        /* Efeito de hover no botão */
+        .btn-whatsapp:hover { transform: scale(1.05); transition: 0.3s; }
 
         /* --- QUEM SOMOS --- */
         .about-container { display: flex; align-items: center; gap: 60px; }
@@ -63,7 +65,6 @@
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         .service-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
         .service-card:hover { transform: translateY(-5px); }
-        .service-icon { width: 50px; height: 50px; margin-bottom: 20px; } /* Ajuste o tamanho dos ícones */
         .service-title { font-size: 24px; margin-bottom: 10px; color: black; font-weight: 700; }
 
         /* --- AVALIAÇÕES (CARROSSEL) --- */
@@ -85,7 +86,7 @@
         .author-name { font-weight: 700; font-size: 20px; }
         .stars { color: #FFD700; font-size: 20px; }
 
-        /* --- CONTATOS (Estilo do Vídeo) --- */
+        /* --- CONTATOS --- */
         .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         .contact-card { 
             background: white; border: 2px solid var(--primary-orange); border-radius: 15px; 
@@ -99,19 +100,33 @@
         }
 
         .location-grid { display: flex; justify-content: space-between; margin-top: 60px; flex-wrap: wrap; gap: 40px; }
+        .location-info { flex: 1; min-width: 300px; }
+        .hours-info { flex: 1; min-width: 300px; }
+        
         .location-info h3, .hours-info h3 { color: var(--primary-orange); font-size: 24px; margin-bottom: 15px; font-weight: 700; }
         .location-info p, .hours-info p { font-size: 20px; margin-bottom: 10px; }
-        .map-placeholder { width: 100%; height: 200px; background: #ddd; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; color: #888; margin-top: 20px; }
+        
+        /* Estilo do Mapa */
+        .map-wrapper {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #ccc;
+        }
 
         /* --- FOOTER --- */
         footer { background: black; color: white; padding: 40px 0; text-align: center; }
         .footer-copy { color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 14px; }
 
-        /* Responsividade Básica */
+        /* Responsividade */
         @media (max-width: 768px) {
             .hero-container, .about-container { flex-direction: column; text-align: center; }
-            .main-nav { display: none; } /* Menu mobile simplificado */
+            .main-nav { display: none; } 
             .location-grid { flex-direction: column; }
+            .map-wrapper { height: 250px; }
+            .hero-title { font-size: 32px; }
         }
     </style>
 </head>
@@ -137,9 +152,12 @@
             <div class="hero-content">
                 <h2 class="hero-title">A <span class="highlight">GC CAR</span> é sua oficina de confiança em Osasco.</h2>
                 <p class="hero-subtitle">Garantimos serviços com preço justo para o seu veículo.</p>
-                <a href="#" class="btn-whatsapp">Falar no WhatsApp</a>
+                <a href="https://wa.me/5511999999999" class="btn-whatsapp">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 14.59L18 16L12 22L6 16L7.41 14.59L11 18.17V8H13V18.17L16.59 14.59Z"/></svg>
+                    Falar no WhatsApp
+                </a>
             </div>
-            <img src="https://placehold.co/600x400/orange/white?text=Foto+do+Carro" alt="Carro GC Car" style="max-width: 100%; width: 500px;">
+            <img src="https://placehold.co/600x400/orange/white?text=Foto+do+Carro+Aqui" alt="Carro GC Car" style="max-width: 100%; width: 500px; border-radius: 10px;">
         </div>
     </section>
 
@@ -153,7 +171,7 @@
                     Com mais de <strong>7 anos de experiência</strong> no mercado, nossa equipe é formada por especialistas altamente <strong>qualificados</strong>, prontos para qualquer <strong>desafio</strong>.
                 </p>
             </div>
-            <img src="https://placehold.co/500x400/333/white?text=Mecanico+Trabalhando" class="about-image" alt="Mecânico">
+            <img src="https://placehold.co/500x400/333/white?text=Foto+Mecanico+Aqui" class="about-image" alt="Mecânico">
         </div>
     </section>
 
@@ -164,22 +182,22 @@
             
             <div class="services-grid">
                 <div class="service-card">
-                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">🔧</div>
+                    <div style="font-size: 40px; margin-bottom: 15px;">🔧</div>
                     <h3 class="service-title">Revisão Completa</h3>
                     <p>Inspeção detalhada de todos os sistemas do veículo para garantir segurança e desempenho.</p>
                 </div>
                 <div class="service-card">
-                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">🛢️</div>
+                    <div style="font-size: 40px; margin-bottom: 15px;">🛢️</div>
                     <h3 class="service-title">Troca de Óleo</h3>
                     <p>Troca de óleo e filtros com produtos de qualidade para prolongar a vida útil do motor.</p>
                 </div>
                 <div class="service-card">
-                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">🛑</div>
+                    <div style="font-size: 40px; margin-bottom: 15px;">🛑</div>
                     <h3 class="service-title">Freios</h3>
                     <p>Manutenção e troca de pastilhas, disco e sistema de freios completo.</p>
                 </div>
                 <div class="service-card">
-                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">💻</div>
+                    <div style="font-size: 40px; margin-bottom: 15px;">💻</div>
                     <h3 class="service-title">Diagnóstico Eletrônico</h3>
                     <p>Identificação precisa de problemas através de equipamentos modernos de diagnóstico.</p>
                 </div>
@@ -194,42 +212,31 @@
 
             <div class="reviews-carousel">
                 <button class="carousel-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
-                
                 <div class="reviews-window">
                     <div class="reviews-track" id="track">
                         <div class="review-card">
                             <div class="author-info">
                                 <div class="author-avatar" style="background: #4285F4;">B</div>
-                                <div>
-                                    <div class="author-name">Bruno Schmitz</div>
-                                    <div class="stars">★★★★★</div>
-                                </div>
+                                <div><div class="author-name">Bruno Schmitz</div><div class="stars">★★★★★</div></div>
                             </div>
                             <p>"Levei meu carro esse mês pela primeira vez na GC Car. A experiência foi muito positiva e com certeza levarei novamente nas próximas revisões."</p>
                         </div>
                         <div class="review-card">
                             <div class="author-info">
                                 <div class="author-avatar" style="background: #34A853;">L</div>
-                                <div>
-                                    <div class="author-name">Luciano Garcia</div>
-                                    <div class="stars">★★★★★</div>
-                                </div>
+                                <div><div class="author-name">Luciano Garcia</div><div class="stars">★★★★★</div></div>
                             </div>
                             <p>"Serviço realizado com honestidade, seriedade e clareza. Levei meu carro para uma manutenção e fui muito bem atendido."</p>
                         </div>
                         <div class="review-card">
                             <div class="author-info">
                                 <div class="author-avatar" style="background: #FBBC05;">R</div>
-                                <div>
-                                    <div class="author-name">Renato Guedes</div>
-                                    <div class="stars">★★★★★</div>
-                                </div>
+                                <div><div class="author-name">Renato Guedes</div><div class="stars">★★★★★</div></div>
                             </div>
                             <p>"Ótimos profissionais, super atenciosos e educados. Explicam tudo tirando fotos e fazendo vídeo. Preço justo e qualidade."</p>
                         </div>
                     </div>
                 </div>
-
                 <button class="carousel-arrow next" onclick="moveSlide(1)">&#10095;</button>
             </div>
         </div>
@@ -265,7 +272,20 @@
                 <div class="location-info">
                     <h3>📍 Onde Estamos</h3>
                     <p>Av. João Batista, n 535 - Centro, Osasco - SP</p>
-                    <div class="map-placeholder">MAPA DO GOOGLE AQUI</div>
+                    <p>CEP: 06097-105</p>
+                    
+                    <div class="map-wrapper">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://maps.google.com/maps?q=Av.+Jo%C3%A3o+Batista,+535+-+Centro,+Osasco+-+SP,+06097-105&t=&z=16&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
+
                 </div>
                 <div class="hours-info">
                     <h3>⏰ Horário de funcionamento</h3>
@@ -295,23 +315,10 @@
 
         function moveSlide(direction) {
             currentIndex = currentIndex + direction;
-
-            // Volta pro início se passar do fim
-            if (currentIndex >= totalCards) {
-                currentIndex = 0;
-            }
-            // Vai pro fim se voltar do início
-            if (currentIndex < 0) {
-                currentIndex = totalCards - 1;
-            }
-
-            // Move o carrossel (100% é a largura de um card)
+            if (currentIndex >= totalCards) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = totalCards - 1;
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
     </script>
-
-</body>
-</html>
-
 </body>
 </html>
