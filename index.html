@@ -15,7 +15,7 @@
             --primary-orange: #f97316;
             --primary-orange-darker: #fa7214;
             --dark-bg: #000000;
-            --light-bg: #eeeeee;
+            --light-bg: #F5F5F5; /* Fundo cinza claro */
             --card-bg: #ffffff;
             --text-dark: #272727;
             --text-light: #eeeeee;
@@ -24,48 +24,137 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Lato', sans-serif; background-color: var(--light-bg); color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
         a { text-decoration: none; color: inherit; }
-        .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 40px; }
         section { padding: 100px 0; position: relative; }
         .text-center { text-align: center; }
+        
+        /* Tipografia */
         .section-title {
             font-family: 'Encode Sans', sans-serif; font-weight: 600; font-size: 48px;
             color: var(--primary-orange); margin-bottom: 20px; letter-spacing: 2px; text-align: center;
         }
 
-        /* --- HEADER --- */
-        .header-section { background-color: var(--dark-bg); padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+        /* --- HEADER (Fundo Preto) --- */
+        .header-section { 
+            background-color: var(--dark-bg); 
+            padding: 25px 0; 
+            position: sticky; top: 0; z-index: 1000; 
+        }
         .header-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-main { font-family: 'Encode Sans Semi Expanded', sans-serif; font-size: 32px; color: var(--primary-orange); font-weight: 600; }
-        .logo-sub { font-size: 14px; color: var(--primary-orange); }
-        .main-nav { display: flex; gap: 30px; }
-        .main-nav a { color: var(--text-light); font-size: 18px; font-weight: 500; transition: color 0.3s; }
+        
+        .logo-main { 
+            font-family: 'Encode Sans Semi Expanded', sans-serif; 
+            font-size: 36px; 
+            color: var(--primary-orange); 
+            font-weight: 600; 
+            line-height: 1;
+        }
+        .logo-sub { 
+            font-size: 16px; 
+            color: var(--primary-orange); 
+            margin-top: 5px;
+        }
+        
+        .main-nav { display: flex; gap: 40px; }
+        .main-nav a { 
+            color: white; 
+            font-size: 18px; 
+            font-weight: 500; 
+            transition: color 0.3s; 
+            font-family: 'Encode Sans', sans-serif;
+        }
         .main-nav a:hover { color: var(--primary-orange); }
 
-        /* --- HERO --- */
-        #section-hero { background-color: var(--light-bg); padding: 80px 0; }
-        .hero-container { display: flex; align-items: center; gap: 50px; }
-        .hero-content { flex: 1; }
-        .hero-title { font-size: 48px; line-height: 1.2; margin-bottom: 20px; color: black; }
+        /* --- HERO (Com forma geométrica) --- */
+        #section-hero { 
+            background-color: #F3F3F3; 
+            padding: 80px 0 0 0; 
+            min-height: 85vh; 
+            display: flex;
+            align-items: center;
+            overflow: hidden; 
+        }
+        
+        .hero-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .hero-content { 
+            flex: 1; 
+            max-width: 600px; 
+            z-index: 10; 
+        }
+        
+        .hero-title { 
+            font-family: 'Lato', sans-serif;
+            font-size: 56px; 
+            line-height: 1.1; 
+            margin-bottom: 20px; 
+            color: black; 
+            font-weight: 400;
+        }
+        
         .highlight { color: var(--primary-orange); font-weight: 700; }
-        .hero-subtitle { font-size: 24px; margin-bottom: 40px; color: #444; }
+        
+        .hero-subtitle { 
+            font-size: 24px; 
+            margin-bottom: 50px; 
+            color: #555; 
+            font-weight: 400;
+        }
+        
         .btn-whatsapp {
-            display: inline-flex; align-items: center; gap: 10px;
+            display: inline-flex; align-items: center; gap: 15px;
             background-color: var(--primary-orange-darker); color: white;
-            padding: 15px 30px; border-radius: 10px; font-weight: 700; font-size: 20px;
+            padding: 18px 40px; border-radius: 12px; font-weight: 700; font-size: 22px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
             cursor: pointer;
         }
         .btn-whatsapp:hover { transform: scale(1.05); transition: 0.3s; }
 
-        /* --- QUEM SOMOS (ATUALIZADO) --- */
+        /* Forma Laranja e Carro */
+        .hero-image-container {
+            flex: 1;
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            top: 10%;
+            right: -150px;
+            width: 140%;
+            height: 100%;
+            background-color: var(--primary-orange);
+            clip-path: polygon(25% 20%, 100% 0, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .hero-car-image {
+            position: absolute;
+            z-index: 2;
+            width: 130%;
+            max-width: 900px;
+            right: -50px;
+            bottom: 50px;
+            filter: drop-shadow(10px 20px 30px rgba(0,0,0,0.3));
+        }
+
+        /* --- QUEM SOMOS --- */
         .about-container { display: flex; align-items: center; gap: 60px; }
-        .about-content { flex: 1; } /* Texto ocupa metade */
+        .about-content { flex: 1; }
         .about-text { font-size: 24px; line-height: 1.5; text-align: justify; }
         
-        /* Ajuste de tamanho da imagem */
         .about-image { 
             flex: 1;
             width: 100%; 
-            max-width: 550px; /* Trava o tamanho máximo */
+            max-width: 550px; /* Trava o tamanho */
             height: auto; 
             border-radius: 10px; 
             box-shadow: 10px 10px 0px var(--primary-orange); 
@@ -132,13 +221,16 @@
         .footer-copy { color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 14px; }
 
         /* Responsividade */
-        @media (max-width: 768px) {
-            .hero-container, .about-container { flex-direction: column; text-align: center; }
-            .main-nav { display: none; } 
+        @media (max-width: 900px) {
+            .hero-container { flex-direction: column; text-align: center; }
+            .hero-image-container { width: 100%; height: 400px; margin-top: 50px; }
+            .hero-bg-shape { width: 100%; right: 0; top: 20%; clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%); }
+            .hero-car-image { width: 100%; right: auto; bottom: 20px; }
+            .main-nav { display: none; }
+            .hero-title { font-size: 36px; }
+            .about-container { flex-direction: column; text-align: center; }
+            .about-image { max-width: 100%; }
             .location-grid { flex-direction: column; }
-            .map-wrapper { height: 250px; }
-            .hero-title { font-size: 32px; }
-            .about-image { max-width: 100%; } /* No celular ocupa a largura toda */
         }
     </style>
 </head>
@@ -166,11 +258,16 @@
                 <p class="hero-subtitle">Garantimos serviços com preço justo para o seu veículo.</p>
                 
                 <a href="#section-contacts" class="btn-whatsapp">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 14.59L18 16L12 22L6 16L7.41 14.59L11 18.17V8H13V18.17L16.59 14.59Z"/></svg>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 14.59L18 16L12 22L6 16L7.41 14.59L11 18.17V8H13V18.17L16.59 14.59Z"/></svg>
                     Falar no WhatsApp
                 </a>
             </div>
-            <img src="carro.png" alt="Carro GC Car" style="max-width: 100%; width: 500px; border-radius: 10px;">
+            
+            <div class="hero-image-container">
+                <div class="hero-bg-shape"></div>
+                
+                <img src="carro.png" alt="Carro GC Car" class="hero-car-image">
+            </div>
         </div>
     </section>
 
