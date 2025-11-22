@@ -56,10 +56,21 @@
         }
         .btn-whatsapp:hover { transform: scale(1.05); transition: 0.3s; }
 
-        /* --- QUEM SOMOS --- */
+        /* --- QUEM SOMOS (ATUALIZADO) --- */
         .about-container { display: flex; align-items: center; gap: 60px; }
+        .about-content { flex: 1; } /* Texto ocupa metade */
         .about-text { font-size: 24px; line-height: 1.5; text-align: justify; }
-        .about-image { width: 100%; border-radius: 10px; box-shadow: 10px 10px 0px var(--primary-orange); }
+        
+        /* Ajuste de tamanho da imagem */
+        .about-image { 
+            flex: 1;
+            width: 100%; 
+            max-width: 550px; /* Trava o tamanho máximo */
+            height: auto; 
+            border-radius: 10px; 
+            box-shadow: 10px 10px 0px var(--primary-orange); 
+            object-fit: cover;
+        }
 
         /* --- SERVIÇOS --- */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
@@ -127,6 +138,7 @@
             .location-grid { flex-direction: column; }
             .map-wrapper { height: 250px; }
             .hero-title { font-size: 32px; }
+            .about-image { max-width: 100%; } /* No celular ocupa a largura toda */
         }
     </style>
 </head>
