@@ -1,1 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GC CAR - Serviços Automotivos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
+    <style>
+        /* --- CSS GERAL (Baseado no seu arquivo) --- */
+        :root {
+            --primary-orange: #f97316;
+            --primary-orange-darker: #fa7214;
+            --dark-bg: #000000;
+            --light-bg: #eeeeee;
+            --card-bg: #ffffff;
+            --text-dark: #272727;
+            --text-light: #eeeeee;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--light-bg); color: var(--text-dark); overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        section { padding: 100px 0; position: relative; }
+        .text-center { text-align: center; }
+        .section-title {
+            font-family: 'Encode Sans', sans-serif; font-weight: 600; font-size: 48px;
+            color: var(--primary-orange); margin-bottom: 20px; letter-spacing: 2px; text-align: center;
+        }
+
+        /* --- HEADER --- */
+        .header-section { background-color: var(--dark-bg); padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-main { font-family: 'Encode Sans Semi Expanded', sans-serif; font-size: 32px; color: var(--primary-orange); font-weight: 600; }
+        .logo-sub { font-size: 14px; color: var(--primary-orange); }
+        .main-nav { display: flex; gap: 30px; }
+        .main-nav a { color: var(--text-light); font-size: 18px; font-weight: 500; transition: color 0.3s; }
+        .main-nav a:hover { color: var(--primary-orange); }
+
+        /* --- HERO --- */
+        #section-hero { background-color: var(--light-bg); padding: 80px 0; }
+        .hero-container { display: flex; align-items: center; gap: 50px; }
+        .hero-content { flex: 1; }
+        .hero-title { font-size: 48px; line-height: 1.2; margin-bottom: 20px; color: black; }
+        .highlight { color: var(--primary-orange); font-weight: 700; }
+        .hero-subtitle { font-size: 24px; margin-bottom: 40px; color: #444; }
+        .btn-whatsapp {
+            display: inline-flex; align-items: center; gap: 10px;
+            background-color: var(--primary-orange-darker); color: white;
+            padding: 15px 30px; border-radius: 10px; font-weight: 700; font-size: 20px;
+        }
+
+        /* --- QUEM SOMOS --- */
+        .about-container { display: flex; align-items: center; gap: 60px; }
+        .about-text { font-size: 24px; line-height: 1.5; text-align: justify; }
+        .about-image { width: 100%; border-radius: 10px; box-shadow: 10px 10px 0px var(--primary-orange); }
+
+        /* --- SERVIÇOS --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .service-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-icon { width: 50px; height: 50px; margin-bottom: 20px; } /* Ajuste o tamanho dos ícones */
+        .service-title { font-size: 24px; margin-bottom: 10px; color: black; font-weight: 700; }
+
+        /* --- AVALIAÇÕES (CARROSSEL) --- */
+        .reviews-carousel { position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 40px; }
+        .reviews-window { overflow: hidden; width: 100%; max-width: 1000px; }
+        .reviews-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .review-card { 
+            min-width: 100%; box-sizing: border-box; padding: 40px; 
+            background: white; border-radius: 15px; text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .carousel-arrow { 
+            background: none; border: none; cursor: pointer; font-size: 40px; color: #888; transition: 0.3s;
+        }
+        .carousel-arrow:hover { color: var(--primary-orange); transform: scale(1.1); }
+        
+        .author-info { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .author-avatar { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px; }
+        .author-name { font-weight: 700; font-size: 20px; }
+        .stars { color: #FFD700; font-size: 20px; }
+
+        /* --- CONTATOS (Estilo do Vídeo) --- */
+        .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .contact-card { 
+            background: white; border: 2px solid var(--primary-orange); border-radius: 15px; 
+            padding: 30px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        }
+        .contact-name { font-size: 32px; color: var(--primary-orange); margin-bottom: 10px; font-weight: 700; }
+        .contact-role { font-weight: 800; font-size: 14px; margin-bottom: 15px; text-transform: uppercase; }
+        .contact-desc { font-size: 16px; margin-bottom: 25px; color: #555; text-transform: uppercase; }
+        .contact-btn { 
+            background: var(--primary-orange); color: white; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 18px; display: block;
+        }
+
+        .location-grid { display: flex; justify-content: space-between; margin-top: 60px; flex-wrap: wrap; gap: 40px; }
+        .location-info h3, .hours-info h3 { color: var(--primary-orange); font-size: 24px; margin-bottom: 15px; font-weight: 700; }
+        .location-info p, .hours-info p { font-size: 20px; margin-bottom: 10px; }
+        .map-placeholder { width: 100%; height: 200px; background: #ddd; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; color: #888; margin-top: 20px; }
+
+        /* --- FOOTER --- */
+        footer { background: black; color: white; padding: 40px 0; text-align: center; }
+        .footer-copy { color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 14px; }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            .hero-container, .about-container { flex-direction: column; text-align: center; }
+            .main-nav { display: none; } /* Menu mobile simplificado */
+            .location-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-section">
+        <div class="container header-container">
+            <div class="logo">
+                <h1 class="logo-main">GC CAR</h1>
+                <p class="logo-sub">Serviços automotivos</p>
+            </div>
+            <nav class="main-nav">
+                <a href="#section-about">Quem somos</a>
+                <a href="#section-services">Serviços</a>
+                <a href="#section-reviews">Avaliações</a>
+                <a href="#section-contacts">Contatos</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="section-hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h2 class="hero-title">A <span class="highlight">GC CAR</span> é sua oficina de confiança em Osasco.</h2>
+                <p class="hero-subtitle">Garantimos serviços com preço justo para o seu veículo.</p>
+                <a href="#" class="btn-whatsapp">Falar no WhatsApp</a>
+            </div>
+            <img src="https://placehold.co/600x400/orange/white?text=Foto+do+Carro" alt="Carro GC Car" style="max-width: 100%; width: 500px;">
+        </div>
+    </section>
+
+    <section id="section-about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">Quem somos</h2>
+                <p class="about-text">
+                    A <strong>GC</strong> nasceu com uma missão clara: ser sinônimo de <strong>qualidade</strong> e <strong>confiança</strong> em serviços automotivos.
+                    <br><br>
+                    Com mais de <strong>7 anos de experiência</strong> no mercado, nossa equipe é formada por especialistas altamente <strong>qualificados</strong>, prontos para qualquer <strong>desafio</strong>.
+                </p>
+            </div>
+            <img src="https://placehold.co/500x400/333/white?text=Mecanico+Trabalhando" class="about-image" alt="Mecânico">
+        </div>
+    </section>
+
+    <section id="section-services">
+        <div class="container">
+            <h2 class="section-title">Nossos serviços</h2>
+            <p class="text-center" style="font-size: 20px; margin-bottom: 40px;">Oferecemos uma ampla gama de serviços automotivos gerais com qualidade e garantia.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">🔧</div>
+                    <h3 class="service-title">Revisão Completa</h3>
+                    <p>Inspeção detalhada de todos os sistemas do veículo para garantir segurança e desempenho.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">🛢️</div>
+                    <h3 class="service-title">Troca de Óleo</h3>
+                    <p>Troca de óleo e filtros com produtos de qualidade para prolongar a vida útil do motor.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">🛑</div>
+                    <h3 class="service-title">Freios</h3>
+                    <p>Manutenção e troca de pastilhas, disco e sistema de freios completo.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 40px; color: #fa7214; margin-bottom: 15px;">💻</div>
+                    <h3 class="service-title">Diagnóstico Eletrônico</h3>
+                    <p>Identificação precisa de problemas através de equipamentos modernos de diagnóstico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-reviews" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Avaliações</h2>
+            <p class="text-center" style="font-size: 20px; margin-bottom: 40px;">Quem confia, recomenda. Confira as avaliações reais de quem já passou por aqui.</p>
+
+            <div class="reviews-carousel">
+                <button class="carousel-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+                
+                <div class="reviews-window">
+                    <div class="reviews-track" id="track">
+                        <div class="review-card">
+                            <div class="author-info">
+                                <div class="author-avatar" style="background: #4285F4;">B</div>
+                                <div>
+                                    <div class="author-name">Bruno Schmitz</div>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                            </div>
+                            <p>"Levei meu carro esse mês pela primeira vez na GC Car. A experiência foi muito positiva e com certeza levarei novamente nas próximas revisões."</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="author-info">
+                                <div class="author-avatar" style="background: #34A853;">L</div>
+                                <div>
+                                    <div class="author-name">Luciano Garcia</div>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                            </div>
+                            <p>"Serviço realizado com honestidade, seriedade e clareza. Levei meu carro para uma manutenção e fui muito bem atendido."</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="author-info">
+                                <div class="author-avatar" style="background: #FBBC05;">R</div>
+                                <div>
+                                    <div class="author-name">Renato Guedes</div>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                            </div>
+                            <p>"Ótimos profissionais, super atenciosos e educados. Explicam tudo tirando fotos e fazendo vídeo. Preço justo e qualidade."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-contacts">
+        <div class="container">
+            <h2 class="section-title">Contatos</h2>
+            <p class="text-center" style="font-size: 20px;">Para garantir um atendimento ágil, fale diretamente com um de nossos sócios</p>
+
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <h3 class="contact-name">Emerson</h3>
+                    <p class="contact-role">Especialista em Diagnóstico</p>
+                    <p class="contact-desc">Fale com ele sobre motores, injeção e falhas elétricas.</p>
+                    <a href="#" class="contact-btn">(11) 98745-0925</a>
+                </div>
+                <div class="contact-card">
+                    <h3 class="contact-name">Beto</h3>
+                    <p class="contact-role">Agendamento e Orçamentos</p>
+                    <p class="contact-desc">Fale com ele para agendar revisão e orçamentos de peças.</p>
+                    <a href="#" class="contact-btn">(11) 96343-9822</a>
+                </div>
+                <div class="contact-card">
+                    <h3 class="contact-name">Marcelo</h3>
+                    <p class="contact-role">Especialista em Serviços</p>
+                    <p class="contact-desc">Fale com ele sobre troca de peças e serviços gerais.</p>
+                    <a href="#" class="contact-btn">(11) 98402-9822</a>
+                </div>
+            </div>
+
+            <div class="location-grid">
+                <div class="location-info">
+                    <h3>📍 Onde Estamos</h3>
+                    <p>Av. João Batista, n 535 - Centro, Osasco - SP</p>
+                    <div class="map-placeholder">MAPA DO GOOGLE AQUI</div>
+                </div>
+                <div class="hours-info">
+                    <h3>⏰ Horário de funcionamento</h3>
+                    <p>Segunda a Quinta das 7:00 às 18:00</p>
+                    <p>Sexta das 7:00 às 17:00</p>
+                    
+                    <h3 style="margin-top: 30px;">👤 Nossos Canais</h3>
+                    <p>gccar.mecanica@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h1 class="logo-main">GC CAR</h1>
+            <p class="logo-sub">Serviços automotivos</p>
+            <p class="footer-copy">© 2025 GC CAR Serviços Automotivos. Todos os Direitos Reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const track = document.getElementById('track');
+        const cards = document.querySelectorAll('.review-card');
+        const totalCards = cards.length;
+
+        function moveSlide(direction) {
+            currentIndex = currentIndex + direction;
+
+            // Volta pro início se passar do fim
+            if (currentIndex >= totalCards) {
+                currentIndex = 0;
+            }
+            // Vai pro fim se voltar do início
+            if (currentIndex < 0) {
+                currentIndex = totalCards - 1;
+            }
+
+            // Move o carrossel (100% é a largura de um card)
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+
+</body>
+</html>
+
+</body>
+</html>
