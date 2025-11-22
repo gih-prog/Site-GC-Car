@@ -65,7 +65,7 @@
         }
         .main-nav a:hover { color: var(--primary-orange); }
 
-        /* --- HERO (Com forma geométrica) --- */
+        /* --- HERO (CORRIGIDO) --- */
         #section-hero { 
             background-color: #F3F3F3; 
             padding: 80px 0 0 0; 
@@ -80,11 +80,12 @@
             align-items: center; 
             justify-content: space-between;
             width: 100%;
+            gap: 20px; /* Espaço de segurança entre texto e carro */
         }
         
         .hero-content { 
             flex: 1; 
-            max-width: 600px; 
+            max-width: 500px; /* Trava a largura do texto */
             z-index: 10; 
         }
         
@@ -115,33 +116,33 @@
         }
         .btn-whatsapp:hover { transform: scale(1.05); transition: 0.3s; }
 
-        /* Forma Laranja e Carro */
+        /* Forma Laranja e Carro (CORRIGIDOS) */
         .hero-image-container {
             flex: 1;
             position: relative;
             height: 600px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end; /* Empurra tudo para a direita */
         }
 
         .hero-bg-shape {
             position: absolute;
-            top: 10%;
-            right: -150px;
-            width: 140%;
+            top: 0;
+            right: -200px; /* Joga a forma mais para fora */
+            width: 120%;
             height: 100%;
             background-color: var(--primary-orange);
-            clip-path: polygon(25% 20%, 100% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); /* Recorte diagonal */
             z-index: 1;
         }
 
         .hero-car-image {
             position: absolute;
             z-index: 2;
-            width: 130%;
-            max-width: 900px;
-            right: -50px;
+            width: 100%; /* Tamanho controlado */
+            max-width: 850px; 
+            right: -50px; /* Posicionamento fino */
             bottom: 50px;
             filter: drop-shadow(10px 20px 30px rgba(0,0,0,0.3));
         }
@@ -222,10 +223,11 @@
 
         /* Responsividade */
         @media (max-width: 900px) {
-            .hero-container { flex-direction: column; text-align: center; }
-            .hero-image-container { width: 100%; height: 400px; margin-top: 50px; }
+            .hero-container { flex-direction: column; text-align: center; gap: 0; }
+            .hero-content { max-width: 100%; }
+            .hero-image-container { width: 100%; height: 400px; margin-top: 30px; }
             .hero-bg-shape { width: 100%; right: 0; top: 20%; clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%); }
-            .hero-car-image { width: 100%; right: auto; bottom: 20px; }
+            .hero-car-image { width: 100%; max-width: 100%; right: auto; bottom: 20px; }
             .main-nav { display: none; }
             .hero-title { font-size: 36px; }
             .about-container { flex-direction: column; text-align: center; }
