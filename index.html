@@ -15,7 +15,7 @@
             --primary-orange: #f97316;
             --primary-orange-darker: #fa7214;
             --dark-bg: #000000;
-            --light-bg: #F5F5F5;
+            --light-bg: #F2F2F2;
             --card-bg: #ffffff;
             --text-dark: #272727;
             --text-light: #eeeeee;
@@ -37,28 +37,28 @@
         /* --- HEADER --- */
         .header-section { 
             background-color: var(--dark-bg); 
-            padding: 25px 0; 
+            padding: 20px 0; 
             position: sticky; top: 0; z-index: 1000; 
         }
         .header-container { display: flex; justify-content: space-between; align-items: center; }
         
         .logo-main { 
             font-family: 'Encode Sans Semi Expanded', sans-serif; 
-            font-size: 36px; 
+            font-size: 32px; 
             color: var(--primary-orange); 
             font-weight: 600; 
             line-height: 1;
         }
         .logo-sub { 
-            font-size: 16px; 
+            font-size: 14px; 
             color: var(--primary-orange); 
-            margin-top: 5px;
+            margin-top: 4px;
         }
         
         .main-nav { display: flex; gap: 40px; }
         .main-nav a { 
             color: white; 
-            font-size: 18px; 
+            font-size: 16px; 
             font-weight: 500; 
             transition: color 0.3s; 
             font-family: 'Encode Sans', sans-serif;
@@ -67,12 +67,14 @@
 
         /* --- HERO --- */
         #section-hero { 
-            background-color: #F3F3F3; 
-            padding: 80px 0 0 0; 
-            min-height: 85vh; 
+            background-color: #F2F2F2; 
+            padding: 0; 
+            height: 85vh; 
+            min-height: 600px;
             display: flex;
             align-items: center;
             overflow: hidden; 
+            position: relative;
         }
         
         .hero-container { 
@@ -80,71 +82,77 @@
             align-items: center; 
             justify-content: space-between;
             width: 100%;
-            gap: 20px;
+            height: 100%;
+            position: relative;
+            z-index: 10;
         }
         
+        /* AQUI ESTÁ A MUDANÇA PARA SUBIR O TEXTO */
         .hero-content { 
             flex: 1; 
-            max-width: 500px; 
-            z-index: 10; 
+            max-width: 550px; 
+            margin-top: -80px; /* Puxa o texto para cima */
+            z-index: 10;
         }
         
         .hero-title { 
             font-family: 'Lato', sans-serif;
-            font-size: 56px; 
+            font-size: 52px; 
             line-height: 1.1; 
-            margin-bottom: 20px; 
-            color: black; 
+            margin-bottom: 24px; 
+            color: #1a1a1a; 
             font-weight: 400;
         }
         
         .highlight { color: var(--primary-orange); font-weight: 700; }
         
         .hero-subtitle { 
-            font-size: 24px; 
-            margin-bottom: 50px; 
+            font-size: 20px; 
+            margin-bottom: 40px; 
             color: #555; 
             font-weight: 400;
+            line-height: 1.4;
         }
         
         .btn-whatsapp {
-            display: inline-flex; align-items: center; gap: 15px;
+            display: inline-flex; align-items: center; gap: 12px;
             background-color: var(--primary-orange-darker); color: white;
-            padding: 18px 40px; border-radius: 12px; font-weight: 700; font-size: 22px;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+            padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 18px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
             cursor: pointer;
+            transition: transform 0.2s;
         }
-        .btn-whatsapp:hover { transform: scale(1.05); transition: 0.3s; }
+        .btn-whatsapp:hover { transform: translateY(-2px); }
 
-        /* Forma Laranja e Carro */
-        .hero-image-container {
-            flex: 1;
-            position: relative;
-            height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
+        /* A FORMA LARANJA */
         .hero-bg-shape {
             position: absolute;
             top: 0;
-            right: -200px;
-            width: 120%;
+            right: 0;
+            width: 55%; 
             height: 100%;
             background-color: var(--primary-orange);
             clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
             z-index: 1;
         }
 
-        .hero-car-image {
+        /* O CARRO */
+        .hero-image-container {
             position: absolute;
+            right: -5%; 
+            top: 50%;
+            transform: translateY(-50%); 
+            width: 60%; 
             z-index: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-car-image {
             width: 100%;
-            max-width: 850px;
-            right: -50px;
-            bottom: 50px;
-            filter: drop-shadow(10px 20px 30px rgba(0,0,0,0.3));
+            max-width: 900px;
+            height: auto;
+            filter: drop-shadow(5px 15px 30px rgba(0,0,0,0.25));
         }
 
         /* --- QUEM SOMOS --- */
@@ -162,22 +170,9 @@
             object-fit: cover;
         }
 
-        /* --- SERVIÇOS (CORRIGIDO) --- */
-        .services-grid { 
-            display: grid; 
-            /* FORÇA 4 COLUNAS NA MESMA LINHA */
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 20px; /* Diminuí um pouco o gap para caber melhor */
-            margin-top: 50px; 
-        }
-        
-        .service-card { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-            transition: transform 0.3s; 
-        }
+        /* --- SERVIÇOS --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .service-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
         .service-card:hover { transform: translateY(-5px); }
         .service-title { font-size: 24px; margin-bottom: 10px; color: black; font-weight: 700; }
 
@@ -233,25 +228,34 @@
         footer { background: black; color: white; padding: 40px 0; text-align: center; }
         .footer-copy { color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 14px; }
 
-        /* Responsividade */
+        /* RESPONSIVIDADE */
         @media (max-width: 900px) {
-            .hero-container { flex-direction: column; text-align: center; gap: 0; }
-            .hero-content { max-width: 100%; }
-            .hero-image-container { width: 100%; height: 400px; margin-top: 30px; }
-            .hero-bg-shape { width: 100%; right: 0; top: 20%; clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%); }
-            .hero-car-image { width: 100%; max-width: 100%; right: auto; bottom: 20px; }
+            #section-hero { height: auto; padding: 60px 0; flex-direction: column; }
+            .hero-container { flex-direction: column; text-align: center; }
+            
+            /* No celular, removemos a margem negativa para não bugar */
+            .hero-content { max-width: 100%; padding: 0 20px; margin-top: 0; }
+            
+            .hero-bg-shape { 
+                width: 100%; right: 0; top: auto; bottom: 0; height: 40%; 
+                clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%); 
+            }
+            .hero-image-container { 
+                position: relative; right: auto; top: auto; transform: none; 
+                width: 100%; margin-top: 40px; 
+            }
+            .hero-car-image { width: 90%; }
+            
             .main-nav { display: none; }
             .hero-title { font-size: 36px; }
             .about-container { flex-direction: column; text-align: center; }
             .about-image { max-width: 100%; }
             .location-grid { flex-direction: column; }
-            
-            /* Ajuste dos Serviços para Tablets/Celulares */
-            .services-grid { grid-template-columns: repeat(2, 1fr); } /* 2 por linha no tablet */
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 600px) {
-            .services-grid { grid-template-columns: 1fr; } /* 1 por linha no celular */
+            .services-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -273,19 +277,20 @@
     </header>
 
     <section id="section-hero">
+        <div class="hero-bg-shape"></div>
+
         <div class="container hero-container">
             <div class="hero-content">
                 <h2 class="hero-title">A <span class="highlight">GC CAR</span> é sua oficina de confiança em Osasco.</h2>
                 <p class="hero-subtitle">Garantimos serviços com preço justo para o seu veículo.</p>
                 
                 <a href="#section-contacts" class="btn-whatsapp">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 14.59L18 16L12 22L6 16L7.41 14.59L11 18.17V8H13V18.17L16.59 14.59Z"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 14.59L18 16L12 22L6 16L7.41 14.59L11 18.17V8H13V18.17L16.59 14.59Z"/></svg>
                     Falar no WhatsApp
                 </a>
             </div>
             
             <div class="hero-image-container">
-                <div class="hero-bg-shape"></div>
                 <img src="carro.png" alt="Carro GC Car" class="hero-car-image">
             </div>
         </div>
