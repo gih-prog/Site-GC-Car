@@ -1,933 +1,474 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GC CAR - Serviços Automotivos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-    <meta charset="UTF-8">
+    <style>
+        /* --- CSS GERAL --- */
+        :root {
+            --primary-orange: #f97316;
+            --primary-orange-darker: #fa7214;
+            --dark-bg: #000000;
+            --light-bg: #F2F2F2;
+            --card-bg: #ffffff;
+            --text-dark: #272727;
+            --text-light: #eeeeee;
+        }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--light-bg); color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+        section { padding: 100px 0; position: relative; }
+        .text-center { text-align: center; }
+        
+        /* Tipografia */
+        .section-title {
+            font-family: 'Encode Sans', sans-serif; font-weight: 600; font-size: 48px;
+            color: var(--primary-orange); margin-bottom: 20px; letter-spacing: 2px; text-align: center;
+        }
 
-    <title>GC CAR - Serviços Automotivos</title>
+        /* --- HEADER --- */
+        .header-section { 
+            background-color: var(--dark-bg); 
+            padding: 20px 0; 
+            position: sticky; top: 0; z-index: 1000; 
+        }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-main { 
+            font-family: 'Encode Sans Semi Expanded', sans-serif; 
+            font-size: 32px; 
+            color: var(--primary-orange); 
+            font-weight: 600; 
+            line-height: 1;
+        }
+        .logo-sub { 
+            font-size: 14px; 
+            color: var(--primary-orange); 
+            margin-top: 4px;
+        }
+        
+        .main-nav { display: flex; gap: 40px; }
+        .main-nav a { 
+            color: white; 
+            font-size: 16px; 
+            font-weight: 500; 
+            transition: color 0.3s; 
+            font-family: 'Encode Sans', sans-serif;
+        }
+        .main-nav a:hover { color: var(--primary-orange); }
 
-    
+        /* --- HERO --- */
+        #section-hero { 
+            background-color: #F2F2F2; 
+            padding: 0; 
+            height: 85vh; 
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            overflow: hidden; 
+            position: relative;
+        }
+        
+        .hero-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-content { 
+            flex: 1; 
+            max-width: 550px; 
+            margin-top: -80px;
+            z-index: 10;
+        }
+        
+        .hero-title { 
+            font-family: 'Lato', sans-serif;
+            font-size: 52px; 
+            line-height: 1.1; 
+            margin-bottom: 24px; 
+            color: #1a1a1a; 
+            font-weight: 400;
+        }
+        
+        .highlight { color: var(--primary-orange); font-weight: 700; }
+        
+        .hero-subtitle { 
+            font-size: 20px; 
+            margin-bottom: 40px; 
+            color: #555; 
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        
+        .btn-whatsapp {
+            display: inline-flex; align-items: center; gap: 12px;
+            background-color: var(--primary-orange-darker); color: white;
+            padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 18px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-whatsapp:hover { transform: translateY(-2px); }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-
-
-
-    <style>
-
-        /* --- CSS GERAL --- */
-
-        :root {
-
-            --primary-orange: #f97316;
-
-            --primary-orange-darker: #fa7214;
-
-            --dark-bg: #000000;
-
-            --light-bg: #F2F2F2;
-
-            --card-bg: #ffffff;
-
-            --text-dark: #272727;
-
-            --text-light: #eeeeee;
-
+        /* NOVO ESTILO: Garante que a imagem do ícone tenha o tamanho correto */
+        .whatsapp-icon {
+            width: 20px; /* Tamanho do ícone */
+            height: 20px;
         }
-
-
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body { font-family: 'Lato', sans-serif; background-color: var(--light-bg); color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
-
-        a { text-decoration: none; color: inherit; }
-
-        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 40px; }
-
-        section { padding: 100px 0; position: relative; }
-
-        .text-center { text-align: center; }
-
-        
-
-        /* Tipografia */
-
-        .section-title {
-
-            font-family: 'Encode Sans', sans-serif; font-weight: 600; font-size: 48px;
-
-            color: var(--primary-orange); margin-bottom: 20px; letter-spacing: 2px; text-align: center;
-
-        }
-
-
-
-        /* --- HEADER --- */
-
-        .header-section { 
-
-            background-color: var(--dark-bg); 
-
-            padding: 20px 0; 
-
-            position: sticky; top: 0; z-index: 1000; 
-
-        }
-
-        .header-container { display: flex; justify-content: space-between; align-items: center; }
-
-        
-
-        .logo-main { 
-
-            font-family: 'Encode Sans Semi Expanded', sans-serif; 
-
-            font-size: 32px; 
-
-            color: var(--primary-orange); 
-
-            font-weight: 600; 
-
-            line-height: 1;
-
-        }
-
-        .logo-sub { 
-
-            font-size: 14px; 
-
-            color: var(--primary-orange); 
-
-            margin-top: 4px;
-
-        }
-
-        
-
-        .main-nav { display: flex; gap: 40px; }
-
-        .main-nav a { 
-
-            color: white; 
-
-            font-size: 16px; 
-
-            font-weight: 500; 
-
-            transition: color 0.3s; 
-
-            font-family: 'Encode Sans', sans-serif;
-
-        }
-
-        .main-nav a:hover { color: var(--primary-orange); }
-
-
-
-        /* --- HERO --- */
-
-        #section-hero { 
-
-            background-color: #F2F2F2; 
-
-            padding: 0; 
-
-            height: 85vh; 
-
-            min-height: 600px;
-
-            display: flex;
-
-            align-items: center;
-
-            overflow: hidden; 
-
-            position: relative;
-
-        }
-
-        
-
-        .hero-container { 
-
-            display: flex; 
-
-            align-items: center; 
-
-            justify-content: space-between;
-
-            width: 100%;
-
-            height: 100%;
-
-            position: relative;
-
-            z-index: 10;
-
-        }
-
-        
-
-        .hero-content { 
-
-            flex: 1; 
-
-            max-width: 550px; 
-
-            margin-top: -80px;
-
-            z-index: 10;
-
-        }
-
-        
-
-        .hero-title { 
-
-            font-family: 'Lato', sans-serif;
-
-            font-size: 52px; 
-
-            line-height: 1.1; 
-
-            margin-bottom: 24px; 
-
-            color: #1a1a1a; 
-
-            font-weight: 400;
-
-        }
-
-        
-
-        .highlight { color: var(--primary-orange); font-weight: 700; }
-
-        
-
-        .hero-subtitle { 
-
-            font-size: 20px; 
-
-            margin-bottom: 40px; 
-
-            color: #555; 
-
-            font-weight: 400;
-
-            line-height: 1.4;
-
-        }
-
-        
-
-        .btn-whatsapp {
-
-            display: inline-flex; align-items: center; gap: 12px;
-
-            background-color: var(--primary-orange-darker); color: white;
-
-            padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 18px;
-
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-
-            cursor: pointer;
-
-            transition: transform 0.2s;
-
-        }
-
-        .btn-whatsapp:hover { transform: translateY(-2px); }
-
-
-
-        .hero-bg-shape {
-
-            position: absolute;
-
-            top: 0;
-
-            right: 0;
-
-            width: 55%; 
-
-            height: 100%;
-
-            background-color: var(--primary-orange);
-
-            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-
-            z-index: 1;
-
-        }
-
-
-
-        .hero-image-container {
-
-            position: absolute;
-
-            right: -5%; 
-
-            top: 50%;
-
-            transform: translateY(-50%); 
-
-            width: 60%; 
-
-            z-index: 2;
-
-            display: flex;
-
-            justify-content: center;
-
-        }
-
-
-
-        .hero-car-image {
-
-            width: 100%;
-
-            max-width: 900px;
-
-            height: auto;
-
-            filter: drop-shadow(5px 15px 30px rgba(0,0,0,0.25));
-
-        }
-
-
-
-        /* --- QUEM SOMOS --- */
-
-        .about-container { display: flex; align-items: center; gap: 60px; }
-
-        .about-content { flex: 1; }
-
-        .about-text { font-size: 24px; line-height: 1.5; text-align: justify; }
-
-        
-
-        .about-image { 
-
-            flex: 1;
-
-            width: 100%; 
-
-            max-width: 550px; 
-
-            height: auto; 
-
-            border-radius: 10px; 
-
-            box-shadow: 10px 10px 0px var(--primary-orange); 
-
-            object-fit: cover;
-
-        }
-
-
-
-        /* --- SERVIÇOS (AGORA SIM EM UMA LINHA SÓ) --- */
-
-        .services-grid { 
-
-            display: grid; 
-
-            /* AQUI ESTÁ A CORREÇÃO: 4 COLUNAS FIXAS */
-
-            grid-template-columns: repeat(4, 1fr); 
-
-            gap: 20px; 
-
-            margin-top: 50px; 
-
-        }
-
-        
-
-        .service-card { 
-
-            background: white; 
-
-            padding: 30px; 
-
-            border-radius: 10px; 
-
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-
-            transition: transform 0.3s; 
-
-        }
-
-        .service-card:hover { transform: translateY(-5px); }
-
-        .service-title { font-size: 22px; margin-bottom: 10px; color: black; font-weight: 700; }
-
-
-
-        /* --- AVALIAÇÕES (CARROSSEL) --- */
-
-        .reviews-carousel { position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 40px; }
-
-        .reviews-window { overflow: hidden; width: 100%; max-width: 1000px; }
-
-        .reviews-track { display: flex; transition: transform 0.5s ease-in-out; }
-
-        .review-card { 
-
-            min-width: 100%; box-sizing: border-box; padding: 40px; 
-
-            background: white; border-radius: 15px; text-align: center;
-
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-
-        }
-
-        .carousel-arrow { 
-
-            background: none; border: none; cursor: pointer; font-size: 40px; color: #888; transition: 0.3s;
-
-        }
-
-        .carousel-arrow:hover { color: var(--primary-orange); transform: scale(1.1); }
-
-        
-
-        .author-info { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
-
-        .author-avatar { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px; }
-
-        .author-name { font-weight: 700; font-size: 20px; }
-
-        .stars { color: #FFD700; font-size: 20px; }
-
-
-
-        /* --- CONTATOS --- */
-
-        .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-
-        .contact-card { 
-
-            background: white; border: 2px solid var(--primary-orange); border-radius: 15px; 
-
-            padding: 30px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%;
-
-        }
-
-        .contact-name { font-size: 32px; color: var(--primary-orange); margin-bottom: 10px; font-weight: 700; }
-
-        .contact-role { font-weight: 800; font-size: 14px; margin-bottom: 15px; text-transform: uppercase; }
-
-        .contact-desc { font-size: 16px; margin-bottom: 25px; color: #555; text-transform: uppercase; }
-
-        .contact-btn { 
-
-            background: var(--primary-orange); color: white; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 18px; display: block;
-
-        }
-
-
-
-        .location-grid { display: flex; justify-content: space-between; margin-top: 60px; flex-wrap: wrap; gap: 40px; }
-
-        .location-info { flex: 1; min-width: 300px; }
-
-        .hours-info { flex: 1; min-width: 300px; }
-
-        
-
-        .location-info h3, .hours-info h3 { color: var(--primary-orange); font-size: 24px; margin-bottom: 15px; font-weight: 700; }
-
-        .location-info p, .hours-info p { font-size: 20px; margin-bottom: 10px; }
-
-        
-
-        .map-wrapper {
-
-            width: 100%;
-
-            height: 300px;
-
-            margin-top: 20px;
-
-            border-radius: 10px;
-
-            overflow: hidden;
-
-            border: 2px solid #ccc;
-
-        }
-
-
-
-        /* --- FOOTER --- */
-
-        footer { background: black; color: white; padding: 40px 0; text-align: center; }
-
-        .footer-copy { color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 14px; }
-
-
-
-        /* RESPONSIVIDADE */
-
-        @media (max-width: 900px) {
-
-            #section-hero { height: auto; padding: 60px 0; flex-direction: column; }
-
-            .hero-container { flex-direction: column; text-align: center; }
-
-            .hero-content { max-width: 100%; padding: 0 20px; margin-top: 0; }
-
-            
-
-            .hero-bg-shape { 
-
-                width: 100%; right: 0; top: auto; bottom: 0; height: 40%; 
-
-                clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%); 
-
-            }
-
-            .hero-image-container { 
-
-                position: relative; right: auto; top: auto; transform: none; 
-
-                width: 100%; margin-top: 40px; 
-
-            }
-
-            .hero-car-image { width: 90%; }
-
-            
-
-            .main-nav { display: none; }
-
-            .hero-title { font-size: 36px; }
-
-            .about-container { flex-direction: column; text-align: center; }
-
-            .about-image { max-width: 100%; }
-
-            .location-grid { flex-direction: column; }
-
-            
-
-            /* No Tablet muda para 2 colunas */
-
-            .services-grid { grid-template-columns: repeat(2, 1fr); } 
-
-        }
-
-
-
-        @media (max-width: 600px) {
-
-            /* No Celular muda para 1 coluna */
-
-            .services-grid { grid-template-columns: 1fr; } 
-
-        }
-
-    </style>
-
+        /* FIM NOVO ESTILO */
+
+        .hero-bg-shape {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%; 
+            height: 100%;
+            background-color: var(--primary-orange);
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            right: -5%; 
+            top: 50%;
+            transform: translateY(-50%); 
+            width: 60%; 
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-car-image {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            filter: drop-shadow(5px 15px 30px rgba(0,0,0,0.25));
+        }
+
+        /* --- QUEM SOMOS --- */
+        .about-container { display: flex; align-items: center; gap: 60px; }
+        .about-content { flex: 1; }
+        .about-text { font-size: 24px; line-height: 1.5; text-align: justify; }
+        
+        .about-image { 
+            flex: 1;
+            width: 100%; 
+            max-width: 550px; 
+            height: auto; 
+            border-radius: 10px; 
+            box-shadow: 10px 10px 0px var(--primary-orange); 
+            object-fit: cover;
+        }
+
+        /* --- SERVIÇOS (AGORA SIM EM UMA LINHA SÓ) --- */
+        .services-grid { 
+            display: grid; 
+            /* AQUI ESTÁ A CORREÇÃO: 4 COLUNAS FIXAS */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; 
+            margin-top: 50px; 
+        }
+        
+        .service-card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            transition: transform 0.3s; 
+        }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-title { font-size: 22px; margin-bottom: 10px; color: black; font-weight: 700; }
+
+        /* --- AVALIAÇÕES (CARROSSEL) --- */
+        .reviews-carousel { position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 40px; }
+        .reviews-window { overflow: hidden; width: 100%; max-width: 1000px; }
+        .reviews-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .review-card { 
+            min-width: 100%; box-sizing: border-box; padding: 40px; 
+            background: white; border-radius: 15px; text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .carousel-arrow { 
+            background: none; border: none; cursor: pointer; font-size: 40px; color: #888; transition: 0.3s;
+        }
+        .carousel-arrow:hover { color: var(--primary-orange); transform: scale(1.1); }
+        
+        .author-info { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .author-avatar { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px; }
+        .author-name { font-weight: 700; font-size: 20px; }
+        .stars { color: #FFD700; font-size: 20px; }
+
+        /* --- CONTATOS --- */
+        .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .contact-card { 
+            background: white; border: 2px solid var(--primary-orange); border-radius: 15px; 
+            padding: 30px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        }
+        .contact-name { font-size: 32px; color: var(--primary-orange); margin-bottom: 10px; font-weight: 700; }
+        .contact-role { font-weight: 800; font-size: 14px; margin-bottom: 15px; text-transform: uppercase; }
+        .contact-desc { font-size: 16px; margin-bottom: 25px; color: #555; text-transform: uppercase; }
+        .contact-btn { 
+            background: var(--primary-orange); color: white; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 18px; display: block;
+        }
+
+        .location-grid { display: flex; justify-content: space-between; margin-top: 60px; flex-wrap: wrap; gap: 40px; }
+        .location-info { flex: 1; min-width: 300px; }
+        .hours-info { flex: 1; min-width: 300px; }
+        
+        .location-info h3, .hours-info h3 { color: var(--primary-orange); font-size: 24px; margin-bottom: 15px; font-weight: 700; }
+        .location-info p, .hours-info p { font-size: 20px; margin-bottom: 10px; }
+        
+        .map-wrapper {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #ccc;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: black; color: white; padding: 40px 0; text-align: center; }
+        .footer-copy { color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 14px; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            #section-hero { height: auto; padding: 60px 0; flex-direction: column; }
+            .hero-container { flex-direction: column; text-align: center; }
+            .hero-content { max-width: 100%; padding: 0 20px; margin-top: 0; }
+            
+            .hero-bg-shape { 
+                width: 100%; right: 0; top: auto; bottom: 0; height: 40%; 
+                clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%); 
+            }
+            .hero-image-container { 
+                position: relative; right: auto; top: auto; transform: none; 
+                width: 100%; margin-top: 40px; 
+            }
+            .hero-car-image { width: 90%; }
+            
+            .main-nav { display: none; }
+            .hero-title { font-size: 36px; }
+            .about-container { flex-direction: column; text-align: center; }
+            .about-image { max-width: 100%; }
+            .location-grid { flex-direction: column; }
+            
+            /* No Tablet muda para 2 colunas */
+            .services-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+
+        @media (max-width: 600px) {
+            /* No Celular muda para 1 coluna */
+            .services-grid { grid-template-columns: 1fr; } 
+        }
+    </style>
 </head>
-
 <body>
 
-
-
-    <header class="header-section">
-
-        <div class="container header-container">
-
-            <div class="logo">
-
-                <h1 class="logo-main">GC CAR</h1>
-
-                <p class="logo-sub">Serviços automotivos</p>
-
-            </div>
-
-            <nav class="main-nav">
-
-                <a href="#section-about">Quem somos</a>
-
-                <a href="#section-services">Serviços</a>
-
-                <a href="#section-reviews">Avaliações</a>
-
-                <a href="#section-contacts">Contatos</a>
-
-            </nav>
-
-        </div>
-
-    </header>
-
-
-
-    <section id="section-hero">
-
-        <div class="hero-bg-shape"></div>
-
-        <div class="container hero-container">
-
-            <div class="hero-content">
-
-                <h2 class="hero-title">A <span class="highlight">GC CAR</span> é sua oficina de confiança em Osasco.</h2>
-
-                <p class="hero-subtitle">Garantimos serviços com preço justo para o seu veículo.</p>
-
-                <a href="#section-contacts" class="btn-whatsapp">
-
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 14.59L18 16L12 22L6 16L7.41 14.59L11 18.17V8H13V18.17L16.59 14.59Z"/></svg>
-
-                    Falar no WhatsApp
-
-                </a>
-
-            </div>
-
-            <div class="hero-image-container">
-
-                <img src="carro.png" alt="Carro GC Car" class="hero-car-image">
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <section id="section-about">
-
-        <div class="container about-container">
-
-            <div class="about-content">
-
-                <h2 class="section-title" style="text-align: left;">Quem somos</h2>
-
-                <p class="about-text">
-
-                    A <strong>GC</strong> nasceu com uma missão clara: ser sinônimo de <strong>qualidade</strong> e <strong>confiança</strong> em serviços automotivos.
-
-                    <br><br>
-
-                    Com mais de <strong>7 anos de experiência</strong> no mercado, nossa equipe é formada por especialistas altamente <strong>qualificados</strong>, prontos para qualquer <strong>desafio</strong>.
-
-                </p>
-
-            </div>
-
-            <img src="mecanico.png" class="about-image" alt="Mecânico">
-
-        </div>
-
-    </section>
-
-
-
-    <section id="section-services">
-
-        <div class="container">
-
-            <h2 class="section-title">Nossos serviços</h2>
-
-            <p class="text-center" style="font-size: 20px; margin-bottom: 40px;">Oferecemos uma ampla gama de serviços automotivos gerais com qualidade e garantia.</p>
-
-            
-
-            <div class="services-grid">
-
-                <div class="service-card">
-
-                    <div style="font-size: 40px; margin-bottom: 15px;">🔧</div>
-
-                    <h3 class="service-title">Revisão Completa</h3>
-
-                    <p>Inspeção detalhada de todos os sistemas do veículo para garantir segurança e desempenho.</p>
-
-                </div>
-
-                <div class="service-card">
-
-                    <div style="font-size: 40px; margin-bottom: 15px;">🛢️</div>
-
-                    <h3 class="service-title">Troca de Óleo</h3>
-
-                    <p>Troca de óleo e filtros com produtos de qualidade para prolongar a vida útil do motor.</p>
-
-                </div>
-
-                <div class="service-card">
-
-                    <div style="font-size: 40px; margin-bottom: 15px;">🛑</div>
-
-                    <h3 class="service-title">Freios</h3>
-
-                    <p>Manutenção e troca de pastilhas, disco e sistema de freios completo.</p>
-
-                </div>
-
-                <div class="service-card">
-
-                    <div style="font-size: 40px; margin-bottom: 15px;">💻</div>
-
-                    <h3 class="service-title">Diagnóstico Eletrônico</h3>
-
-                    <p>Identificação precisa de problemas através de equipamentos modernos de diagnóstico.</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <section id="section-reviews" style="background: #f9f9f9;">
-
-        <div class="container">
-
-            <h2 class="section-title">Avaliações</h2>
-
-            <p class="text-center" style="font-size: 20px; margin-bottom: 40px;">Quem confia, recomenda. Confira as avaliações reais de quem já passou por aqui.</p>
-
-
-
-            <div class="reviews-carousel">
-
-                <button class="carousel-arrow prev" onclick="moveSlide(-1)">❮</button>
-
-                <div class="reviews-window">
-
-                    <div class="reviews-track" id="track">
-
-                        <div class="review-card">
-
-                            <div class="author-info">
-
-                                <div class="author-avatar" style="background: #4285F4;">B</div>
-
-                                <div><div class="author-name">Bruno Schmitz</div><div class="stars">★★★★★</div></div>
-
-                            </div>
-
-                            <p>"Levei meu carro esse mês pela primeira vez na GC Car. A experiência foi muito positiva e com certeza levarei novamente nas próximas revisões."</p>
-
-                        </div>
-
-                        <div class="review-card">
-
-                            <div class="author-info">
-
-                                <div class="author-avatar" style="background: #34A853;">L</div>
-
-                                <div><div class="author-name">Luciano Garcia</div><div class="stars">★★★★★</div></div>
-
-                            </div>
-
-                            <p>"Serviço realizado com honestidade, seriedade e clareza. Levei meu carro para uma manutenção e fui muito bem atendido."</p>
-
-                        </div>
-
-                        <div class="review-card">
-
-                            <div class="author-info">
-
-                                <div class="author-avatar" style="background: #FBBC05;">R</div>
-
-                                <div><div class="author-name">Renato Guedes</div><div class="stars">★★★★★</div></div>
-
-                            </div>
-
-                            <p>"Ótimos profissionais, super atenciosos e educados. Explicam tudo tirando fotos e fazendo vídeo. Preço justo e qualidade."</p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <section id="section-contacts">
-
-        <div class="container">
-
-            <h2 class="section-title">Contatos</h2>
-
-            <p class="text-center" style="font-size: 20px;">Para garantir um atendimento ágil, fale diretamente com um de nossos sócios</p>
-
-
-
-            <div class="contacts-grid">
-
-                <div class="contact-card">
-
-                    <h3 class="contact-name">Emerson</h3>
-
-                    <p class="contact-role">Especialista em Diagnóstico</p>
-
-                    <p class="contact-desc">Fale com ele sobre motores, injeção e falhas elétricas.</p>
-
-                    <a href="https://api.whatsapp.com/send?phone=5511987450925&text=Ol%C3%A1,%20tudo%20bem?%20Gostaria%20de%20solicitar%20algum%20servi%C3%A7o." target="_blank" class="contact-btn">(11) 98745-0925</a>
-
-                </div>
-
-                <div class="contact-card">
-
-                    <h3 class="contact-name">Beto</h3>
-
-                    <p class="contact-role">Agendamento e Orçamentos</p>
-
-                    <p class="contact-desc">Fale com ele para agendar revisão e orçamentos de peças.</p>
-
-                    <a href="https://api.whatsapp.com/send?phone=5511963439822&text=Ol%C3%A1,%20tudo%20bem?%20Gostaria%20de%20solicitar%20algum%20servi%C3%A7o." target="_blank" class="contact-btn">(11) 96343-9822</a>
-
-                </div>
-
-                <div class="contact-card">
-
-                    <h3 class="contact-name">Marcelo</h3>
-
-                    <p class="contact-role">Especialista em Serviços</p>
-
-                    <p class="contact-desc">Fale com ele sobre troca de peças e serviços gerais.</p>
-
-                    <a href="https://api.whatsapp.com/send?phone=5511984021910&text=Ol%C3%A1,%20tudo%20bem?%20Gostaria%20de%20solicitar%20algum%20servi%C3%A7o." target="_blank" class="contact-btn">(11) 98402-1910</a>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="location-grid">
-
-                <div class="location-info">
-
-                    <h3>📍 Onde Estamos</h3>
-
-                    <p>Av. João Batista, n 535 - Centro, Osasco - SP</p>
-
-                    <p>CEP: 06097-105</p>
-
-                    
-
-                    <div class="map-wrapper">
-
-                        <iframe 
-
-                            width="100%" 
-
-                            height="100%" 
-
-                            frameborder="0" 
-
-                            scrolling="no" 
-
-                            marginheight="0" 
-
-                            marginwidth="0" 
-
-                            src="https://maps.google.com/maps?q=Av.+Jo%C3%A3o+Batista,+n+535+-+Centro,+Osasco&t=&z=15&ie=UTF8&iwloc=&output=embed">
-
-                        </iframe>
-
-                    </div>
-
-
-
-                </div>
-
-                <div class="hours-info">
-
-                    <h3>⏰ Horário de funcionamento</h3>
-
-                    <p>Segunda a Quinta das 7:00 às 18:00</p>
-
-                    <p>Sexta das 7:00 às 17:00</p>
-
-                    
-
-                    <h3 style="margin-top: 30px;">👤 Nossos Canais</h3>
-
-                    <p>gccar.mecanica@gmail.com</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <footer>
-
-        <div class="container">
-
-            <h1 class="logo-main">GC CAR</h1>
-
-            <p class="logo-sub">Serviços automotivos</p>
-
-            <p class="footer-copy">© 2025 GC CAR Serviços Automotivos. Todos os Direitos Reservados.</p>
-
-        </div>
-
-    </footer>
-
-
-
-    <script>
-
-        let currentIndex = 0;
-
-        const track = document.getElementById('track');
-
-        const cards = document.querySelectorAll('.review-card');
-
-        const totalCards = cards.length;
-
-
-
-        function moveSlide(direction) {
-
-            currentIndex = currentIndex + direction;
-
-            if (currentIndex >= totalCards) currentIndex = 0;
-
-            if (currentIndex < 0) currentIndex = totalCards - 1;
-
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-        }
-
-    </script>
-
+    <header class="header-section">
+        <div class="container header-container">
+            <div class="logo">
+                <h1 class="logo-main">GC CAR</h1>
+                <p class="logo-sub">Serviços automotivos</p>
+            </div>
+            <nav class="main-nav">
+                <a href="#section-about">Quem somos</a>
+                <a href="#section-services">Serviços</a>
+                <a href="#section-reviews">Avaliações</a>
+                <a href="#section-contacts">Contatos</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="section-hero">
+        <div class="hero-bg-shape"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h2 class="hero-title">A <span class="highlight">GC CAR</span> é sua oficina de confiança em Osasco.</h2>
+                <p class="hero-subtitle">Garantimos serviços com preço justo para o seu veículo.</p>
+                <a href="#section-contacts" class="btn-whatsapp">
+                                        <img src="Vetor (4).svg" alt="Ícone WhatsApp" class="whatsapp-icon">
+                    Falar no WhatsApp
+                </a>
+            </div>
+            <div class="hero-image-container">
+                <img src="carro.png" alt="Carro GC Car" class="hero-car-image">
+            </div>
+        </div>
+    </section>
+
+    <section id="section-about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">Quem somos</h2>
+                <p class="about-text">
+                    A <strong>GC</strong> nasceu com uma missão clara: ser sinônimo de <strong>qualidade</strong> e <strong>confiança</strong> em serviços automotivos.
+                    <br><br>
+                    Com mais de <strong>7 anos de experiência</strong> no mercado, nossa equipe é formada por especialistas altamente <strong>qualificados</strong>, prontos para qualquer <strong>desafio</strong>.
+                </p>
+            </div>
+            <img src="mecanico.png" class="about-image" alt="Mecânico">
+        </div>
+    </section>
+
+    <section id="section-services">
+        <div class="container">
+            <h2 class="section-title">Nossos serviços</h2>
+            <p class="text-center" style="font-size: 20px; margin-bottom: 40px;">Oferecemos uma ampla gama de serviços automotivos gerais com qualidade e garantia.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🔧</div>
+                    <h3 class="service-title">Revisão Completa</h3>
+                    <p>Inspeção detalhada de todos os sistemas do veículo para garantir segurança e desempenho.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🛢️</div>
+                    <h3 class="service-title">Troca de Óleo</h3>
+                    <p>Troca de óleo e filtros com produtos de qualidade para prolongar a vida útil do motor.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🛑</div>
+                    <h3 class="service-title">Freios</h3>
+                    <p>Manutenção e troca de pastilhas, disco e sistema de freios completo.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 40px; margin-bottom: 15px;">💻</div>
+                    <h3 class="service-title">Diagnóstico Eletrônico</h3>
+                    <p>Identificação precisa de problemas através de equipamentos modernos de diagnóstico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-reviews" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Avaliações</h2>
+            <p class="text-center" style="font-size: 20px; margin-bottom: 40px;">Quem confia, recomenda. Confira as avaliações reais de quem já passou por aqui.</p>
+
+            <div class="reviews-carousel">
+                <button class="carousel-arrow prev" onclick="moveSlide(-1)">❮</button>
+                <div class="reviews-window">
+                    <div class="reviews-track" id="track">
+                        <div class="review-card">
+                            <div class="author-info">
+                                <div class="author-avatar" style="background: #4285F4;">B</div>
+                                <div><div class="author-name">Bruno Schmitz</div><div class="stars">★★★★★</div></div>
+                            </div>
+                            <p>"Levei meu carro esse mês pela primeira vez na GC Car. A experiência foi muito positiva e com certeza levarei novamente nas próximas revisões."</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="author-info">
+                                <div class="author-avatar" style="background: #34A853;">L</div>
+                                <div><div class="author-name">Luciano Garcia</div><div class="stars">★★★★★</div></div>
+                            </div>
+                            <p>"Serviço realizado com honestidade, seriedade e clareza. Levei meu carro para uma manutenção e fui muito bem atendido."</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="author-info">
+                                <div class="author-avatar" style="background: #FBBC05;">R</div>
+                                <div><div class="author-name">Renato Guedes</div><div class="stars">★★★★★</div></div>
+                            </div>
+                            <p>"Ótimos profissionais, super atenciosos e educados. Explicam tudo tirando fotos e fazendo vídeo. Preço justo e qualidade."</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-contacts">
+        <div class="container">
+            <h2 class="section-title">Contatos</h2>
+            <p class="text-center" style="font-size: 20px;">Para garantir um atendimento ágil, fale diretamente com um de nossos sócios</p>
+
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <h3 class="contact-name">Emerson</h3>
+                    <p class="contact-role">Especialista em Diagnóstico</p>
+                    <p class="contact-desc">Fale com ele sobre motores, injeção e falhas elétricas.</p>
+                    <a href="https://api.whatsapp.com/send?phone=5511987450925&text=Ol%C3%A1,%20tudo%20bem?%20Gostaria%20de%20solicitar%20algum%20servi%C3%A7o." target="_blank" class="contact-btn">(11) 98745-0925</a>
+                </div>
+                <div class="contact-card">
+                    <h3 class="contact-name">Beto</h3>
+                    <p class="contact-role">Agendamento e Orçamentos</p>
+                    <p class="contact-desc">Fale com ele para agendar revisão e orçamentos de peças.</p>
+                    <a href="https://api.whatsapp.com/send?phone=5511963439822&text=Ol%C3%A1,%20tudo%20bem?%20Gostaria%20de%20solicitar%20algum%20servi%C3%A7o." target="_blank" class="contact-btn">(11) 96343-9822</a>
+                </div>
+                <div class="contact-card">
+                    <h3 class="contact-name">Marcelo</h3>
+                    <p class="contact-role">Especialista em Serviços</p>
+                    <p class="contact-desc">Fale com ele sobre troca de peças e serviços gerais.</p>
+                    <a href="https://api.whatsapp.com/send?phone=5511984021910&text=Ol%C3%A1,%20tudo%20bem?%20Gostaria%20de%20solicitar%20algum%20servi%C3%A7o." target="_blank" class="contact-btn">(11) 98402-1910</a>
+                </div>
+            </div>
+
+            <div class="location-grid">
+                <div class="location-info">
+                    <h3>📍 Onde Estamos</h3>
+                    <p>Av. João Batista, n 535 - Centro, Osasco - SP</p>
+                    <p>CEP: 06097-105</p>
+                    
+                    <div class="map-wrapper">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://maps.google.com/maps?q=Av.+Jo%C3%A3o+Batista,+n+535+-+Centro,+Osasco&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
+
+                </div>
+                <div class="hours-info">
+                    <h3>⏰ Horário de funcionamento</h3>
+                    <p>Segunda a Quinta das 7:00 às 18:00</p>
+                    <p>Sexta das 7:00 às 17:00</p>
+                    
+                    <h3 style="margin-top: 30px;">👤 Nossos Canais</h3>
+                    <p>gccar.mecanica@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h1 class="logo-main">GC CAR</h1>
+            <p class="logo-sub">Serviços automotivos</p>
+            <p class="footer-copy">© 2025 GC CAR Serviços Automotivos. Todos os Direitos Reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const track = document.getElementById('track');
+        const cards = document.querySelectorAll('.review-card');
+        const totalCards = cards.length;
+
+        function moveSlide(direction) {
+            currentIndex = currentIndex + direction;
+            if (currentIndex >= totalCards) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = totalCards - 1;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
 </body>
-
 </html>
