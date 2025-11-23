@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GC CAR - Serviços Automotivos</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-
-    <style>
+        <style>
         /* --- CSS GERAL --- */
         :root {
             --primary-orange: #f97316;
@@ -22,18 +18,16 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        /* O PROBLEMA PODE ESTAR AQUI: Garantindo que 'a' não seja sublinhado */
+        
+        /* Corrigindo a formatação básica e o sublinhado */
         body { 
-            font-family: 'Lato', sans-serif; 
+            font-family: sans-serif; /* Usando fonte padrão como fallback */
             background-color: var(--light-bg); 
             color: var(--text-dark); 
             overflow-x: hidden; 
             scroll-behavior: smooth; 
-            /* Garantindo que a fonte padrão não seja a Times New Roman */
-            font-family: sans-serif;
         }
         a { text-decoration: none !important; color: inherit; }
-        /* FIM DO AJUSTE DE RESET */
         
         .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 40px; }
         section { padding: 100px 0; position: relative; }
@@ -41,7 +35,8 @@
         
         /* Tipografia */
         .section-title {
-            font-family: 'Encode Sans', sans-serif; font-weight: 600; font-size: 48px;
+            font-family: sans-serif; /* Fallback */ 
+            font-weight: 600; font-size: 48px;
             color: var(--primary-orange); margin-bottom: 20px; letter-spacing: 2px; text-align: center;
         }
 
@@ -54,7 +49,7 @@
         .header-container { display: flex; justify-content: space-between; align-items: center; }
         
         .logo-main { 
-            font-family: 'Encode Sans Semi Expanded', sans-serif; 
+            font-family: sans-serif; /* Fallback */
             font-size: 32px; 
             color: var(--primary-orange); 
             font-weight: 600; 
@@ -72,7 +67,7 @@
             font-size: 16px; 
             font-weight: 500; 
             transition: color 0.3s; 
-            font-family: 'Encode Sans', sans-serif;
+            font-family: sans-serif; /* Fallback */
         }
         .main-nav a:hover { color: var(--primary-orange); }
 
@@ -106,7 +101,7 @@
         }
         
         .hero-title { 
-            font-family: 'Lato', sans-serif;
+            font-family: sans-serif; /* Fallback */
             font-size: 52px; 
             line-height: 1.1; 
             margin-bottom: 24px; 
@@ -409,7 +404,6 @@
                 </div>
                 <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
             </div>
-        </div>
     </section>
 
     <section id="section-contacts">
@@ -441,6 +435,7 @@
             <div class="location-grid">
                 <div class="location-info">
                     <h3>📍 Onde Estamos</h3>
+        140/948
                     <p>Av. João Batista, n 535 - Centro, Osasco - SP</p>
                     <p>CEP: 06097-105</p>
                     
