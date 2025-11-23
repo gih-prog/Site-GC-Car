@@ -114,9 +114,18 @@
         }
         
         .btn-whatsapp {
-            display: inline-flex; align-items: center; gap: 12px;
-            background-color: var(--primary-orange-darker); color: white;
-            padding: 16px 32px; border-radius: 8px; font-weight: 700; font-size: 18px;
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px;
+            /* Adiciona explicitamente para garantir que não haja sublinhado no link do botão */
+            text-decoration: none; 
+            
+            background-color: var(--primary-orange-darker); 
+            color: white;
+            padding: 16px 32px; 
+            border-radius: 8px; 
+            font-weight: 700; 
+            font-size: 18px;
             box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
             cursor: pointer;
             transition: transform 0.2s;
@@ -301,7 +310,7 @@
                 <h2 class="hero-title">A <span class="highlight">GC CAR</span> é sua oficina de confiança em Osasco.</h2>
                 <p class="hero-subtitle">Garantimos serviços com preço justo para o seu veículo.</p>
                 <a href="#section-contacts" class="btn-whatsapp">
-                                        <img src="Vetor (4).svg" alt="Ícone WhatsApp" class="whatsapp-icon">
+                    <img src="Vetor (4).svg" alt="Ícone WhatsApp" class="whatsapp-icon">
                     Falar no WhatsApp
                 </a>
             </div>
