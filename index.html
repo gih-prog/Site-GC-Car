@@ -22,8 +22,19 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Lato', sans-serif; background-color: var(--light-bg); color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
-        a { text-decoration: none; color: inherit; }
+        /* O PROBLEMA PODE ESTAR AQUI: Garantindo que 'a' não seja sublinhado */
+        body { 
+            font-family: 'Lato', sans-serif; 
+            background-color: var(--light-bg); 
+            color: var(--text-dark); 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
+            /* Garantindo que a fonte padrão não seja a Times New Roman */
+            font-family: sans-serif;
+        }
+        a { text-decoration: none !important; color: inherit; }
+        /* FIM DO AJUSTE DE RESET */
+        
         .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 40px; }
         section { padding: 100px 0; position: relative; }
         .text-center { text-align: center; }
@@ -117,11 +128,11 @@
             display: inline-flex; 
             align-items: center; 
             gap: 12px;
-            /* Adiciona explicitamente para garantir que não haja sublinhado no link do botão */
-            text-decoration: none; 
+            /* Garantindo que o sublinhado seja removido e a cor seja aplicada */
+            text-decoration: none !important; 
+            color: white !important;
             
             background-color: var(--primary-orange-darker); 
-            color: white;
             padding: 16px 32px; 
             border-radius: 8px; 
             font-weight: 700; 
